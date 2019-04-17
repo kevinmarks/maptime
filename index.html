@@ -14,8 +14,8 @@ crossorigin=""></script>
     </div>
     <script>
         var map = L.map('mapid').setView([51.510931, -0.11811132], 16);
-        //const tiles = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
-        const tiles = L.tileLayer.provider('Stamen.Watercolor').addTo(map);
+        const tiles = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+        //const tiles = L.tileLayer.provider('Stamen.Watercolor').addTo(map);
         //var somersethouse = L.marker([51.511119, -0.117116]).addTo(map);
         //var pret = L.marker([51.511123, -0.119328]).addTo(map);
         //var siamthai = L.marker([51.512063, -0.120157]).addTo(map);
@@ -28,7 +28,7 @@ crossorigin=""></script>
             radius: 300
         }).addTo(map);*/
         
-        navigator.geolocation.getCurrentPosition(locationUpdate, locationUpdateFail, 
+        var watch = navigator.geolocation.watchPosition(locationUpdate, locationUpdateFail, 
         {
             enableHighAccuracy: false,
             maximumAge: 30000,
@@ -36,8 +36,14 @@ crossorigin=""></script>
         });
         
         function locationUpdate(position) {
-            var me = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
-            map.setView([position.coords.latitude, position.coords.longitude], 20);
+            var me = L.circle([position.coords.latitude, position.coords.longitude], 
+        {
+            color: 'green',
+            fillColor: '#0f3',
+            fillOpacity: 0.10,
+            radius: position.coords.accuracy
+        }).addTo(map)
+            map.setView([position.coords.latitude, position.coords.longitude], 14);
         }
         function locationUpdateFail(error) 
         {
