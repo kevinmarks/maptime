@@ -18,10 +18,13 @@ crossorigin=""></script>
     </div>
     <script>
         var map = L.map('mapid').setView([51.510931, -0.11811132], 16);
-        const tiles = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+        //const tiles = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
         //const tiles = L.tileLayer.provider('Stamen.Watercolor').addTo(map);
+        const tiles = L.tileLayer.provider('Stamen.Terrain').addTo(map);
+        var found_you=false;
         //var somersethouse = L.marker([51.511119, -0.117116]).addTo(map);
-        //var pret = L.marker([51.511123, -0.119328]).addTo(map);
+        var pret = L.marker([51.511123, -0.119328]).addTo(map);
+        pret.bindPopup('Prêt a Manger<br>7/10');
         //var siamthai = L.marker([51.512063, -0.120157]).addTo(map);
         
         /*var coventGardenRadius = L.circle([51.512370, -0.124170], 
@@ -48,7 +51,10 @@ crossorigin=""></script>
                         fillOpacity: 0.10,
                         radius: position.coords.accuracy
                     }).addTo(map);
-            map.setView([position.coords.latitude, position.coords.longitude], 14);
+            if (!found_you) {
+                map.setView([position.coords.latitude, position.coords.longitude], 14);
+                found_you=true;
+                }
             }
         }
         function locationUpdateFail(error) 
