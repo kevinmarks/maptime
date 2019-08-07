@@ -9,22 +9,28 @@ integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfW
 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
 crossorigin=""></script>
 <script src="leaflet-providers.js"></script>
-<style>#mapid { height: 100vh; }</style>
+<style>
+body {display:grid; grid-template-areas: 'map list'; grid-template-columns: 1fr 1fr; grid-template-rows: 100vh;}
+#mapid { grid-area: map; height: 100%; width:100%;}
+aside {grid-area:list;}
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>There you are</title>
 </head>
 <body>
-    <div id="mapid">
-    </div>
-    <script>
-        var map = L.map('mapid').setView([51.510931, -0.11811132], 16);
-        //const tiles = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
-        //const tiles = L.tileLayer.provider('Stamen.Watercolor').addTo(map);
-        const tiles = L.tileLayer.provider('Stamen.Terrain').addTo(map);
-        var found_you=false;
+    <main id="mapid"></main>
+    <aside id="my places">
+    <div class="hreview"><h2 class="summary">Coffee, cheesecake and chill</h2><abbr class="dtreviewed" title="2019-08-07T19:29">Aug 7, 2019</abbr> by <span class="reviewer vcard"><span class="fn">Kevin Marks</span></span><span class="type" style="display: none;">place</span><div class="item"><span class="fn">De Meló Lounge</span></div><blockquote class="description"><p><abbr title="5" class="rating">★★★★★</abbr> Holding Homebrew Website Club Teesside here makes sense as it is a calm place for conversation. However, I don't want to talk to myself.</p></blockquote></div>
+    </aside>   
+ <script>
+        const map = L.map('mapid').setView([51.510931, -0.11811132], 16);
+        //const tiles = L.tileLayer.provider('CartoDB.Voyager').addTo(map);
+        const tiles = L.tileLayer.provider('Stamen.Watercolor').addTo(map);
+        //const tiles = L.tileLayer.provider('Stamen.Terrain').addTo(map);
+        let found_you=false;
         //var somersethouse = L.marker([51.511119, -0.117116]).addTo(map);
-        var pret = L.marker([51.511123, -0.119328]).addTo(map);
-        pret.bindPopup('Prêt a Manger<br>7/10');
+        const demelo = L.marker([54.5696464, -1.2389365]).addTo(map);
+        demelo.bindPopup('De Meló Lounge<br><a href="">Homebrew Website Club Teesside</a>');
         //var siamthai = L.marker([51.512063, -0.120157]).addTo(map);
         
         /*var coventGardenRadius = L.circle([51.512370, -0.124170], 
@@ -62,7 +68,6 @@ crossorigin=""></script>
             console.log("location fail: ", error);
         }
     </script>
-
 </body>
 </html>
  
