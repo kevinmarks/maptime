@@ -21,6 +21,12 @@ aside {grid-area:list;}
     <main id="mapid"></main>
     <aside id="my places">
     <div class="hreview"><h2 class="summary">Coffee, cheesecake and chill</h2><abbr class="dtreviewed" title="2019-08-07T19:29">Aug 7, 2019</abbr> by <span class="reviewer vcard"><span class="fn">Kevin Marks</span></span><span class="type" style="display: none;">place</span><div class="item"><span class="fn">De Meló Lounge</span></div><blockquote class="description"><p><abbr title="5" class="rating">★★★★★</abbr> Holding Homebrew Website Club Teesside here makes sense as it is a calm place for conversation. However, I don't want to talk to myself.</p></blockquote></div>
+    <div class="h-event">
+    <p>🍩 Portland HWC pop-up for XOXO conference week! 
+<span class="p-location location h-card"><span class="p-name">Mozilla</span>,
+<span class="p-locality">Portland</span>, <abbr class="p-region" title="Oregon">OR</abbr></span>
+</p>
+    </div>
     </aside>   
  <script>
         const map = L.map('mapid').setView([51.510931, -0.11811132], 16);
@@ -31,6 +37,8 @@ aside {grid-area:list;}
         //var somersethouse = L.marker([51.511119, -0.117116]).addTo(map);
         const demelo = L.marker([54.5696464, -1.2389365]).addTo(map);
         demelo.bindPopup('De Meló Lounge<br><a href="">Homebrew Website Club Teesside</a>');
+        const hwcpdx= L.marker([45.523668, -122.682695]),addTo(map);
+        hwcpdx.bindPopup('Mozilla Portland<br><a href="https://indieweb.org/events/2019-09-04-homebrew-website-club#Portland">Homebrew Website Club Portland</a>')
         //var siamthai = L.marker([51.512063, -0.120157]).addTo(map);
         
         /*var coventGardenRadius = L.circle([51.512370, -0.124170], 
